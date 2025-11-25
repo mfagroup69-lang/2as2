@@ -133,16 +133,17 @@
 <script>
   const tasks = document.querySelectorAll('.task');
 
-  function downloadFile(filename) {
-    const element = document.createElement('a');
-    const fileContent = "هذا محتوى " + filename;
-    const blob = new Blob([fileContent], { type: 'text/plain' });
-    element.href = URL.createObjectURL(blob);
-    element.download = filename;
-    document.body.appendChild(element);
-    element.click();
-    document.body.removeChild(element);
-  }
+ <script>
+function downloadFile(filename) {
+  const link = document.createElement('a');
+  link.href = filename;       // تحميل الملف الحقيقي
+  link.download = filename;   // يجبر المتصفح على تحميله
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+</script>
+
 
   // حفظ المهام المنجزة وإخفاؤها
   tasks.forEach(task => {
@@ -195,6 +196,7 @@ dailyNotification();
 
 </body>
 </html>
+
 
 
 
